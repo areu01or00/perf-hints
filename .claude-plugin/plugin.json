@@ -1,6 +1,6 @@
 {
   "name": "perf-hints",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "A language-agnostic performance optimization workflow with back-of-envelope analysis, bottleneck detection, and validated fixes. Based on Jeff Dean and Sanjay Ghemawat's Performance Hints from Google.",
   "author": {
     "name": "TensorSlay"

@@ -8,7 +8,7 @@
       "name": "perf-hints",
       "source": "./",
       "description": "A language-agnostic performance optimization workflow based on Jeff Dean and Sanjay Ghemawat's techniques. Includes /perf command with 7-phase workflow, perf-analyzer and perf-reviewer agents.",
-      "version": "1.0.0",
+      "version": "2.0.0",
       "keywords": ["performance", "optimization", "profiling", "latency", "back-of-envelope"],
       "category": "development"
     }

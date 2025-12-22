@@ -1,13 +1,15 @@
 # Perf-Hints
 
-A language agnostic Performance optimization workflow for Claude Code based on Jeff Dean and Sanjay Ghemawat's [Performance Hints](https://abseil.io/fast/hints.html) from Google.
+A language-agnostic engineering wisdom plugin for Claude Code based on Google's [Abseil](https://abseil.io) - performance optimization, code review, testing, and software engineering practices.
 
 ## What It Does
 
-Provides a systematic approach to performance optimization:
-- Back-of-envelope calculations before touching code
-- Bottleneck detection with estimated savings
-- Validated fixes that don't break correctness
+Curated, task-organized knowledge from Google's engineering practices:
+- **Performance optimization** - Back-of-envelope, profiling, memory
+- **Code review** - Practices and checklists
+- **Testing** - Strategies and principles
+- **API design** - Performance-conscious interfaces
+- **Scaling** - Large-scale changes and migrations
 
 ## Installation
 
@@ -18,63 +20,65 @@ Provides a systematic approach to performance optimization:
 
 ## Usage
 
-### Full Workflow (Recommended)
+### Full Workflow
 
 ```bash
 /perf
-```
-
-Or target specific code:
-
-```bash
 /perf backend/api/
 ```
 
 The `/perf` command runs a 7-phase workflow:
-
 1. **Scoping** - Understand what needs optimization
-2. **Analysis** - Launch perf-analyzer agents for back-of-envelope calculations
-3. **Clarifying Questions** - Resolve ambiguities before implementing
-4. **Fix Prioritization** - Rank fixes by ROI
-5. **Implementation** - Apply approved fixes
-6. **Validation** - Launch perf-reviewer agents to verify correctness
-7. **Summary** - Document changes and improvements
+2. **Analysis** - Launch perf-analyzer agents
+3. **Clarifying Questions** - Resolve ambiguities
+4. **Fix Prioritization** - Rank by ROI
+5. **Implementation** - Apply fixes
+6. **Validation** - Launch perf-reviewer agents
+7. **Summary** - Document changes
 
 ### Auto-Triggered Skill
 
-The skill also auto-triggers when you ask things like:
-- "optimize this code"
-- "make this faster"
-- "why is this slow"
-- "reduce allocations"
+Also triggers on:
+- "optimize this code" / "make this faster"
+- "why is this slow" / "review this code"
+- "write tests" / "design an API"
+
+## Reference Files
+
+Task-based routing to curated links:
+
+| Task | Reference |
+|------|-----------|
+| Estimation | `when-estimating.md` |
+| Profiling | `when-measuring-performance.md` |
+| Memory | `when-optimizing-memory.md` |
+| Debugging perf | `when-debugging-perf.md` |
+| Code review | `when-reviewing-code.md` |
+| Testing | `when-writing-tests.md` |
+| API design | `when-designing-apis.md` |
+| Scaling | `when-scaling.md` |
+| Full index | `index.md` |
+
+## Sources
+
+All from [abseil.io](https://abseil.io):
+- [Performance Hints](https://abseil.io/fast/hints.html) - Core guide
+- [Fast Tips](https://abseil.io/fast/) - 25 performance articles
+- [SWE Book](https://abseil.io/resources/swe-book) - Software Engineering at Google
+- [C++ Tips](https://abseil.io/tips/) - Universal principles (extracted)
 
 ## Components
 
-### Agents
-
-| Agent | Purpose |
-|-------|---------|
-| `perf-analyzer` | Traces bottlenecks, does back-of-envelope calculations, identifies optimization opportunities |
-| `perf-reviewer` | Validates that optimizations are correct and actually deliver expected improvements |
-
-### Skill
-
-The `performance-hints` skill provides the philosophy and mental models for thinking about performance, including:
-- Why "write simple code and optimize later" often fails
-- Back-of-envelope estimation techniques
-- What to do when profiles are flat
-- Latency numbers every programmer should know
+| Component | Purpose |
+|-----------|---------|
+| `/perf` command | 7-phase optimization workflow |
+| `perf-analyzer` agent | Back-of-envelope, bottleneck detection |
+| `perf-reviewer` agent | Validates fixes for correctness |
+| `performance-hints` skill | Philosophy + reference routing |
 
 ## Philosophy
 
-> "In established engineering disciplines a 12% improvement, easily obtained, is never considered marginal; and I believe the same viewpoint should prevail in software engineering." — Donald Knuth
-
-Don't dismiss small improvements. Twenty separate 1% improvements compound significantly.
-
-## References
-
-- [Performance Hints (abseil.io)](https://abseil.io/fast/hints.html) - Original source material
-- [Latency Numbers Every Programmer Should Know](https://gist.github.com/jboner/2841832)
+> "In established engineering disciplines a 12% improvement, easily obtained, is never considered marginal." — Donald Knuth
 
 ## License
 

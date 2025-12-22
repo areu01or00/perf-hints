@@ -1,72 +1,69 @@
 ---
 name: performance-hints
-description: This skill should be used when the user asks to "optimize code", "make this faster", "reduce allocations", "improve performance", "speed up", "performance bottleneck", "why is this slow", or mentions performance tuning. Provides the philosophy and techniques from Jeff Dean and Sanjay Ghemawat's Performance Hints.
+description: This skill should be used when the user asks to "optimize code", "make this faster", "reduce allocations", "improve performance", "speed up", "why is this slow", "review this code", "write tests", "design an API", "scale this", or mentions performance, memory, profiling, benchmarking, code review, testing, or engineering practices. Based on Google's Abseil engineering wisdom.
 ---
 
-This skill guides performance optimization using Jeff Dean and Sanjay Ghemawat's techniques from Google. For structured optimization workflows, use the `/perf` command.
+# Perf-Hints
 
-## The Philosophy
+Language-agnostic engineering wisdom from Google's [Abseil](https://abseil.io) - performance optimization, code review, testing, and software engineering practices.
 
-Knuth is quoted out of context: *"premature optimization is the root of all evil."* The full quote:
+## Philosophy
 
-> *"We should forget about small efficiencies, say about 97% of the time: premature optimization is the root of all evil. Yet we should not pass up our opportunities in that critical 3%."*
+> "In established engineering disciplines a 12% improvement, easily obtained, is never considered marginal." — Donald Knuth
 
-This skill is about that critical 3%. More importantly:
+Don't dismiss small improvements. Twenty 1% improvements compound significantly.
 
-> *"In established engineering disciplines a 12% improvement, easily obtained, is never considered marginal; and I believe the same viewpoint should prevail in software engineering."*
+### Why "Optimize Later" Fails
 
-**Don't dismiss small improvements.** Twenty separate 1% improvements compound significantly.
+1. **Flat profile problem** - Performance lost everywhere, no obvious hotspot
+2. **Library users suffer** - They can't easily fix your slow code
+3. **Heavy use constrains changes** - Harder to change systems in production
+4. **Expensive workarounds** - Teams overprovision instead of fixing
 
-### Why "Write Simple Code and Optimize Later" Fails
+## Reference Routing
 
-1. **Flat profile problem**: Ignore performance everywhere, get no obvious hotspots—performance lost all over. No starting point for improvements.
+Consult the appropriate reference file based on the task:
 
-2. **Library users suffer**: Slow library means users who can't easily fix it must understand your code and negotiate fixes.
+| User asks about | Reference file |
+|-----------------|----------------|
+| Back-of-envelope, estimation, costs | `references/when-estimating.md` |
+| Profiling, benchmarking, measurement | `references/when-measuring-performance.md` |
+| Memory, allocations, cache, GC | `references/when-optimizing-memory.md` |
+| "Why is this slow?", debugging perf | `references/when-debugging-perf.md` |
+| Code review, PR review | `references/when-reviewing-code.md` |
+| Testing, unit tests, mocking | `references/when-writing-tests.md` |
+| API design, interfaces, libraries | `references/when-designing-apis.md` |
+| Scaling, migrations, deprecation | `references/when-scaling.md` |
+| Finding a specific article | `references/index.md` |
 
-3. **Heavy use constrains changes**: Harder to change systems in heavy use.
+## Quick Reference
 
-4. **Expensive workarounds**: Without knowing what's fixable, teams overprovision or over-replicate.
-
-**Instead**: Choose the faster alternative when it doesn't significantly hurt readability.
-
-## How to Think About Performance
-
-- **Test code**: Worry about asymptotic complexity. Avoid slow tests—development cycle time matters.
-- **Application code**: Is it initialization or hot path? That distinction is usually sufficient.
-- **Library code**: Hard to predict future sensitivity. Follow simple techniques from the start—easier to find next bottleneck when profiling.
-
-## Back-of-Envelope Estimation
-
-Develop intuition by estimating:
-1. Count operations of each type
-2. Multiply by cost per operation
-3. Add together for total cost
-
-**If you don't know operation costs, you can't estimate.** Learn these:
+### Latency Numbers
 
 ```
-L1 cache reference                             0.5 ns
-Main memory reference                           50 ns
-Datacenter round trip                       50,000 ns
-Read 1MB from memory                        64,000 ns
-Read 1MB from SSD                        1,000,000 ns
-Disk seek                                5,000,000 ns
+L1 cache                    0.5 ns
+Main memory                  50 ns
+Datacenter round trip       50 μs
+Read 1MB memory             64 μs
+Read 1MB SSD                 1 ms
+Disk seek                    5 ms
 ```
 
-Track higher-level costs too: database reads, API latency, page render time.
+### Common Bottlenecks
 
-## When Profiles Are Flat
+| Issue | Pattern | Fix |
+|-------|---------|-----|
+| Sequential I/O | `for` + `await` | Parallelize |
+| Client per request | `async with Client()` | Share client |
+| N+1 queries | Loop of DB calls | Batch query |
+| Hot loop allocations | Object in loop | Pre-allocate |
 
-No obvious hotspot? All low-hanging fruit picked? Then:
+## Sources
 
-1. **Many small optimizations**: Twenty 1% improvements are significant
-2. **Find loops higher in call stacks**: Flame graphs help. Restructure loops—build in one shot, not incrementally
-3. **Replace overly general code**: Regex where prefix match suffices? Drop the regex.
-4. **Reduce allocations**: Every allocation hits a different cache line. Attack highest allocation contributors.
-5. **Hardware counters**: May reveal high cache miss rates
+All wisdom sourced from [abseil.io](https://abseil.io):
+- [Performance Hints](https://abseil.io/fast/hints.html) - Core optimization guide
+- [Fast Tips](https://abseil.io/fast/) - 25 performance articles
+- [SWE Book](https://abseil.io/resources/swe-book) - Software Engineering at Google
+- [C++ Tips](https://abseil.io/tips/) - Universal principles
 
-## Reference Files
-
-For detailed techniques with code examples and benchmarks, consult:
-- **`references/techniques.md`** - API design, memory layout, algorithmic improvements
-- **`references/code-examples.md`** - Before/after code with actual benchmark results (10-50% improvements)
+For the full workflow with agents, use the `/perf` command.
