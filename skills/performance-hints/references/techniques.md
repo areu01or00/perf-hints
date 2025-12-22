@@ -2,7 +2,7 @@
 
 Detailed techniques from Jeff Dean & Sanjay Ghemawat's Performance Hints.
 
-Source: [abseil.io/fast](https://abseil.io/fast/)
+Source: [abseil.io/fast](https://abseil.io/fast/hints.html)
 
 ---
 

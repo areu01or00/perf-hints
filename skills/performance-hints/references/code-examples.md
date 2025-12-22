@@ -1,6 +1,6 @@
 # Code Examples from Jeff Dean & Sanjay Ghemawat's Performance Hints
 
-Source: [abseil.io/fast](https://abseil.io/fast/)
+Source: [abseil.io/fast](https://abseil.io/fast/hints.htmlhints.html)
 
 Real before/after examples from Google's internal codebase with actual benchmark results.
 
@@ -416,4 +416,4 @@ size_t HashLocation(const Location& loc) {
 ## Source
 
 All examples from: Jeff Dean and Sanjay Ghemawat, "Performance Hints"
-https://abseil.io/fast/
+https://abseil.io/fast/hints.html

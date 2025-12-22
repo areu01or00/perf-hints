@@ -1,6 +1,6 @@
 # Perf-Hints
 
-A language agnostic Performance optimization workflow for Claude Code based on Jeff Dean and Sanjay Ghemawat's [Performance Hints](https://abseil.io/fast/) from Google.
+A language agnostic Performance optimization workflow for Claude Code based on Jeff Dean and Sanjay Ghemawat's [Performance Hints](https://abseil.io/fast/hints.html) from Google.
 
 ## What It Does
 
@@ -73,7 +73,7 @@ Don't dismiss small improvements. Twenty separate 1% improvements compound signi
 
 ## References
 
-- [Performance Hints (abseil.io)](https://abseil.io/fast/) - Original source material
+- [Performance Hints (abseil.io)](https://abseil.io/fast/hints.html) - Original source material
 - [Latency Numbers Every Programmer Should Know](https://gist.github.com/jboner/2841832)
 
 ## License
