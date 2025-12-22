@@ -15,7 +15,7 @@ Curated, task-organized knowledge from Google's engineering practices:
 
 ```bash
 /plugin marketplace add areu01or00/perf-hints
-/plugin install perf-hints
+/plugin install perf
 ```
 
 ## Usage
