@@ -1,0 +1,11 @@
+{
+  "name": "perf-hints",
+  "version": "1.0.0",
+  "description": "Performance optimization workflow with back-of-envelope analysis, bottleneck detection, and validated fixes. Based on Jeff Dean and Sanjay Ghemawat's Performance Hints from Google.",
+  "author": {
+    "name": "TensorSlay"
+  },
+  "repository": "https://github.com/areu01or00/perf-hints",
+  "license": "MIT",
+  "keywords": ["performance", "optimization", "profiling", "latency"]
+}
