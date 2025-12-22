@@ -1,5 +1,5 @@
 {
-  "name": "perf-hints",
+  "name": "perf",
   "version": "2.0.0",
   "description": "A language-agnostic performance optimization workflow based on Jeff Dean and Sanjay Ghemawat's techniques.",
   "author": {
