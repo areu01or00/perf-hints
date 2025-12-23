@@ -1,6 +1,6 @@
 # Perf-Hints
 
-A language-agnostic engineering wisdom plugin for Claude Code based on Google's [Abseil](https://abseil.io) - performance optimization, code review, testing, and software engineering practices.
+A language-agnostic engineering wisdom plugin for Claude Code based on Performance Hints by Jeff Dean, Sanjay Ghemawat's viral [article](https://abseil.io/fast/hints.html) - including performance optimization, code review, testing, and software engineering practices.
 
 ## What It Does
 
